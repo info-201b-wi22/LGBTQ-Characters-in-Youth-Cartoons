@@ -20,12 +20,17 @@ plot1_sidebar <- sidebarPanel(
     choices = unique(lgbtq$orientation),
     multiple = T
   ),
-  sliderInput(
-    inputId = "start",
-    label = "Start date:",
-    value = 1950,
-    min = 1950,
-    max = 2019
+  selectInput(
+    inputId = "gender",
+    label = "Character Gender",
+    choices = unique(lgbtq$gender),
+    multiple = T
+  ),
+  selectInput(
+    inputId = "race",
+    label = "Character Race",
+    choices = unique(lgbtq$race),
+    multiple = T
   )
 )
 

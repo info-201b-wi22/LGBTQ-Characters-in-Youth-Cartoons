@@ -5,7 +5,7 @@ library(dplyr)
 lgbtq <- read.csv("trans-characters-in-youth-cartoons.csv")
 plot1_title <- function(orientations) {
   start <- "Number of"
-  middle <- toString(orientations)
+  middle <- "" # toString(orientations) # Runs off screen too often
   end <- "characters over time"
   return(paste(start, middle, end))
 }
@@ -14,10 +14,14 @@ server <- function(input, output) {
 
 
   output$plot1 <- renderPlotly({
+    
     lgbtq_data <- lgbtq %>%
       filter(orientation %in% input$orientation) %>% 
+      filter(gender %in% input$gender) %>% 
+      filter(race %in% input$race) %>% 
       group_by(year) %>% 
       summarise(nchars = n())
+    
     my_plot <- ggplot(data = lgbtq_data) +
       # color = get(input$user_category)
       geom_line(mapping = aes(x = year, y = nchars,
