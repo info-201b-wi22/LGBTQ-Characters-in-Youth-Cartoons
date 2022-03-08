@@ -69,7 +69,11 @@ server <- function(input, output) {
     
     OverallGraphPt2 <- OverallGraph %>% filter(role %in% input$role)
     
-    Graph <- ggplot(data = OverallGraphPt2) + geom_col(mapping = aes(x = input$role, y = ExplicitPercentage), group = 1, color = "red", fill = "white") + theme_dark() + scale_y_continuous(labels = scales::percent) + labs(title = "Explicit percentages based on the role of character", x = "role", y = "Explicit Percentage")
+    OverallGraphPt3 <- OverallGraphPt2 %>% mutate(ImplicitPercentage = 1-ExplicitPercentage)
+    
+    Graph <- ggplot(data = OverallGraphPt3) +
+           geom_col(mapping = aes(x = input$role, y = ExplicitPercentage), group = 1, color = "red", fill = "white")+
+            theme_dark() + scale_y_continuous(labels = scales::percent, limits = c(0,1)) + labs(title = "Explicit percentages based on the role of character", x = "role", y = "Explicit Percentage")
     
     my_plotly <- ggplotly(Graph)
     
