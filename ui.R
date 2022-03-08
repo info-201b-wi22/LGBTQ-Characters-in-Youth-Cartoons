@@ -18,7 +18,6 @@ plot1_sidebar <- sidebarPanel(
     inputId = "orientation",
     label = "Character Orientation",
     choices = unique(lgbtq$orientation),
-    selected = "Choice 1",
     multiple = T
   ),
   sliderInput(
@@ -31,7 +30,7 @@ plot1_sidebar <- sidebarPanel(
 )
 
 plot1_main <- mainPanel(
-  # plotlyOutput(outputId = "plot")
+  plotlyOutput(outputId = "plot1")
 )
 
 plot2_sidebar <- sidebarPanel(

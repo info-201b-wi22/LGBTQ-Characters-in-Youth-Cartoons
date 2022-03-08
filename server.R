@@ -3,34 +3,39 @@ library(plotly)
 library(dplyr)
 
 lgbtq <- read.csv("trans-characters-in-youth-cartoons.csv")
+plot1_title <- function(orientations) {
+  start <- "Number of"
+  middle <- toString(orientations)
+  end <- "characters over time"
+  return(paste(start, middle, end))
+}
 
 server <- function(input, output) {
-  # 
-  # 
-  # output$plot <- renderPlotly({
-  #   # Make a scatter plot of the number of hot dogs eaten over time
-  #   # Allow the user to select the color category
-  #   co2_filtered <- co2 %>% 
-  #     filter(year >= input$start) %>% 
-  #     filter(country %in% input$user_category)
-  #   my_plot <- ggplot(data = co2_filtered) +
-  #     # color = get(input$user_category)
-  #     geom_line(mapping = aes(x = year, y = share_global_co2, color= country,
-  #                             text = paste0("Country: ", country,"<br>",
-  #                                           "Year: ", year),
-  #                             group = 1)) +
-  #     labs(title = "Share of co2 emissions over time", color = "Country/Region",
-  #          x = "Year", y = "Percent global emissions")
-  #   
-  #   # labs(title = "Title", color = custom_legend_titles[[input$user_category]])
-  #   
-  #   # Make interactive plot
-  #   # Remove mode bar
-  #   my_plotly_plot <- ggplotly(my_plot, tooltip = "text") %>%
-  #     config(displayModeBar = FALSE)
-  #   
-  #   return(my_plotly_plot)
-  # })
+
+
+  output$plot1 <- renderPlotly({
+    lgbtq_data <- lgbtq %>%
+      filter(orientation %in% input$orientation) %>% 
+      group_by(year) %>% 
+      summarise(nchars = n())
+    my_plot <- ggplot(data = lgbtq_data) +
+      # color = get(input$user_category)
+      geom_line(mapping = aes(x = year, y = nchars,
+                              text = paste0("Characters: ", nchars,"<br>",
+                              "Year: ", year),
+                              group = 1)) +
+      labs(title = plot1_title(input$orientation),
+           x = "Year", y = "Characters")
+
+    # labs(title = "Title", color = custom_legend_titles[[input$user_category]])
+
+    # Make interactive plot
+    # Remove mode bar
+    my_plotly_plot <- ggplotly(my_plot, tooltip = "text") #%>%
+      # config(displayModeBar = FALSE)
+
+    return(my_plotly_plot)
+  })
   # 
   # # Calculate Summary Values:
   # output$us_share_1950 <- co2 %>% 
