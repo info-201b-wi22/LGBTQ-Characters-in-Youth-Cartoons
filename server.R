@@ -40,6 +40,26 @@ server <- function(input, output) {
 
     return(my_plotly_plot)
   })
+  
+  
+  output$plot2 <- renderPlotly({
+    TotalNum <- lgbtq %>% count(role)
+    
+    ImplicitFilteredNum <- lgbtq %>% filter(representation == 'Implicit') %>% count(role) 
+    
+    ExplicitFilteredNum <- lgbtq %>% filter(representation == 'Explicit') %>% count(role) 
+    
+    OverallGraph <- ImplicitFilteredNum %>% mutate(ExplicitPercentage = ExplicitFilteredNum$n/TotalNum$n)
+    
+    OverallGraphPt2 <- OverallGraph %>% filter(role %in% input$role)
+    
+    Graph <- ggplot(data = OverallGraphPt2) + geom_col(mapping = aes(x = input$role, y = ExplicitPercentage), group = 1, color = "red", fill = "white") + theme_dark() + scale_y_continuous(labels = scales::percent) + labs(title = "Explicit percentages based on the role of character", x = "role", y = "Explicit Percentage")
+    
+    my_plotly <- ggplotly(Graph)
+    
+    return(my_plotly)
+  })
+  
   # 
   # # Calculate Summary Values:
   # output$us_share_1950 <- co2 %>% 

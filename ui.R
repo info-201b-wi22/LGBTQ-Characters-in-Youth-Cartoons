@@ -7,7 +7,6 @@ intro_tab <- tabPanel(
   fluidPage(
     h1("The Dataset"),
     p(""),
-    p("Jackson was here"),
     h1("Summary"),
     p("")
   )
@@ -40,23 +39,15 @@ plot1_main <- mainPanel(
 
 plot2_sidebar <- sidebarPanel(
   selectInput(
-    inputId = "user_category",
-    label = "Countries",
-    choices = c("Choice 1", "Choice 2"),
-    selected = "Choice 1",
-    multiple = T
-  ),
-  sliderInput(
-    inputId = "start",
-    label = "Start date:",
-    value = 1950,
-    min = 1950,
-    max = 2019
-  )
+    inputId = "role",
+    label = "Select the role",
+    choices = unique(lgbtq$role),
+    selected = "Guest Character",
+    multiple = TRUE)
 )
 
 plot2_main <- mainPanel(
-  # plotlyOutput(outputId = "plot")
+  plotlyOutput(outputId = "plot2")
 )
 
 plot3_sidebar <- sidebarPanel(
@@ -81,7 +72,7 @@ plot3_main <- mainPanel(
 )
 
 plot1_tab <- tabPanel(
-  "Plot",
+  "Chart One",
   sidebarLayout(
     plot1_sidebar,
     plot1_main,
@@ -92,18 +83,19 @@ plot1_tab <- tabPanel(
 )
 
 plot2_tab <- tabPanel(
-  "Plot",
+  "Chart Two",
   sidebarLayout(
     plot2_sidebar,
     plot2_main,
   ),
   fluidPage(
-    p("")
+    p("This chart derives from question of how explitcy of the characters might vary based on the role they are assigned. Impact of explicitness
+      character holds can vary based on the weight which character holds in the show. By looking at the chart we are able to get this question answered.")
   )
 )
 
 plot3_tab <- tabPanel(
-  "Plot",
+  "Chart Three",
   sidebarLayout(
     plot3_sidebar,
     plot3_main,
