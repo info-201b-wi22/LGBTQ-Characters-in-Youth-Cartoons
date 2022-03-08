@@ -15,7 +15,7 @@ Link: Link to your Shiny App here
 
 # Introduction
 
-  When you were a kid, did you remember seeing LGBTQ characters on your cartoons? Do you remember the show ever mentioning that they were a part of the LGBTQ community? Were they a main, memorable character, or just simply a background filler on the side?
+  *When you were a kid, did you remember seeing LGBTQ characters on your cartoons? Do you remember the show ever mentioning that they were a part of the LGBTQ community? Were they a main, memorable character, or just simply a background filler on the side?*
 
   In this investigation, we are exploring the representation of LGBTQ characters, specifically in cartoon shows made for children and teenagers. We want to know how the frequency of representation has changed over time, and when characters are explicitly stated to be LGBTQ or only implied as such. This has been a matter of importance and pride for the LGBTQ community to see themselves reflected in the media. For young children who are struggling with their identity and sexuality, seeing positive examples in television can be transformative for them. Since this is something the community has been fighting for a long time to see, it is most informative to compare how representation has changed over the years. We are also interested in how race, gender and orientation intersect. Seeing how representation of, say, transgender characters may or may not differ depending on their race is important to have a better understanding of what gaps persist in bringing greater diversity to children’s entertainment. A crucial part of using data science to challenge power in this regard is making those in power take responsibility for the effects of their actions. This includes knowing what entertainment companies are doing the worst at, including representation of characters that are not straight, cisgender men. 
 
@@ -28,8 +28,11 @@ Link: Link to your Shiny App here
 
   After the careful analysis of the dataset and the reviews of the charts we have made, we have determined that the representation of LGBTQ characters in youth cartoons has indeed increased, although there are some caveats and improvements that could be made. 
 Our first takeaway was from our first graph, LGBTQ characters over time, that displays how as the years go on, the number of LGBTQ characters being introduced into children cartoons has increased significantly. This is a good sign that LGBTQ characters are showing up increasingly in children cartoons, which is a good step towards representation. 
+
   However, there are still some steps to be made. Our second takeaway came in our second graph, Explicit Representation of LGBTQ characters by role, and we can see that guest characters actually have the most explicit representation, while the least representation comes from main characters. This is still something the animation film industry could work on, as incorporating explicit representation to main characters could result in further awareness and acceptance from the audience cheering on and looking up to the main characters. 
+  
   Our third takeaway comes from our third graph, Representation of LGBTQ characters over time by Race, and we found that as time went on, representation did grow for all races, but the most represented was the "N/A" race. Although this could mean that there was not an explicit race for the character, it could also mean that the character was of a different species (for example, an animal, alien, or other lifeforms). In the future, having LGBTQ characters as an explicit human race, especially POC, could lead to more purposeful awareness for real life people. Children would realize that LGBTQ characters exist in real life all around them, and not just as an alien in a cartoon TV show. 
+  
   Nevertheless, LGBTQ representation has improved over the years, and as it increases even further, education and inclusion will continue further as well. Cartoon animation studios have made great strides, and hopefully, will continue to do so.
 
 ![*Some examples of LGBTQ characters in current youth shows!*](https://mombian.com/images/kids_shows.png "LGBTQ shows")
