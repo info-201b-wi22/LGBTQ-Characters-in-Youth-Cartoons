@@ -1,6 +1,6 @@
 library(ggplot2)
 library(plotly)
-
+lgbtq <- read.csv("trans-characters-in-youth-cartoons.csv")
 
 intro_tab <- tabPanel(
   "Introduction",
@@ -15,9 +15,9 @@ intro_tab <- tabPanel(
 
 plot1_sidebar <- sidebarPanel(
   selectInput(
-    inputId = "user_category",
-    label = "Countries",
-    choices = c("Choice 1", "Choice 2"),
+    inputId = "orientation",
+    label = "Character Orientation",
+    choices = unique(lgbtq$orientation),
     selected = "Choice 1",
     multiple = T
   ),

@@ -2,12 +2,7 @@ library(ggplot2)
 library(plotly)
 library(dplyr)
 
-# co2 <- read.csv("owid-co2-data.csv")
-# hotdog_df <- read.csv("https://raw.githubusercontent.com/apreshill/data-vis-labs-2018/master/data/hot_dog_contest.csv")
-
-# custom_legend_titles <- reactiveValues("year" = "Year of Contest", "gender" = "Gender of Athlete", "name" = "Name of Athlete")
-
-# custom_titles <- create custom titles
+lgbtq <- read.csv("trans-characters-in-youth-cartoons.csv")
 
 server <- function(input, output) {
   # 
