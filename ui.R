@@ -7,6 +7,7 @@ intro_tab <- tabPanel(
   fluidPage(
     h1("The Dataset"),
     p(""),
+    p("Jackson was here"),
     h1("Summary"),
     p("")
   )
