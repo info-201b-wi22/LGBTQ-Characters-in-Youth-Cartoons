@@ -15,11 +15,26 @@ server <- function(input, output) {
 
 
   output$plot1 <- renderPlotly({
+    if ("All" %in% input$orientation) {
+      orientation_filter <- unique(lgbtq$orientation)
+    } else {
+      orientation_filter <- input$orientation
+    }
+    if ("All" %in% input$gender) {
+      gender_filter <- unique(lgbtq$gender)
+    } else {
+      gender_filter <- input$gender
+    }
+    if ("All" %in% input$race) {
+      race_filter <- unique(lgbtq$race)
+    } else {
+      race_filter <- input$race
+    }
     
     lgbtq_data <- lgbtq %>%
-      filter(orientation %in% input$orientation) %>% 
-      filter(gender %in% input$gender) %>% 
-      filter(race %in% input$race) %>% 
+      filter(orientation %in% orientation_filter) %>% 
+      filter(gender %in% gender_filter) %>% 
+      filter(race %in% race_filter) %>% 
       group_by(year) %>% 
       summarise(nchars = n())
     

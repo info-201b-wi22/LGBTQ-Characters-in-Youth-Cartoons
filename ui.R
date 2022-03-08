@@ -16,19 +16,22 @@ plot1_sidebar <- sidebarPanel(
   selectInput(
     inputId = "orientation",
     label = "Character Orientation",
-    choices = unique(lgbtq$orientation),
+    choices = c("All", unique(lgbtq$orientation)),
+    selected = "All",
     multiple = T
   ),
   selectInput(
     inputId = "gender",
     label = "Character Gender",
-    choices = unique(lgbtq$gender),
+    choices = c("All", unique(lgbtq$gender)),
+    selected = "All",
     multiple = T
   ),
   selectInput(
     inputId = "race",
     label = "Character Race",
-    choices = unique(lgbtq$race),
+    choices = c("All", unique(lgbtq$race)),
+    selected = "All",
     multiple = T
   )
 )
