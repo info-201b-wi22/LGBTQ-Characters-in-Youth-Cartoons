@@ -13,7 +13,7 @@ intro_tab <- tabPanel(
   )
 )
 
-plot_sidebar <- sidebarPanel(
+plot1_sidebar <- sidebarPanel(
   selectInput(
     inputId = "user_category",
     label = "Countries",
@@ -30,31 +30,89 @@ plot_sidebar <- sidebarPanel(
   )
 )
 
-plot_main <- mainPanel(
+plot1_main <- mainPanel(
   # plotlyOutput(outputId = "plot")
 )
 
-plot_tab <- tabPanel(
+plot2_sidebar <- sidebarPanel(
+  selectInput(
+    inputId = "user_category",
+    label = "Countries",
+    choices = c("Choice 1", "Choice 2"),
+    selected = "Choice 1",
+    multiple = T
+  ),
+  sliderInput(
+    inputId = "start",
+    label = "Start date:",
+    value = 1950,
+    min = 1950,
+    max = 2019
+  )
+)
+
+plot2_main <- mainPanel(
+  # plotlyOutput(outputId = "plot")
+)
+
+plot3_sidebar <- sidebarPanel(
+  selectInput(
+    inputId = "user_category",
+    label = "Countries",
+    choices = c("Choice 1", "Choice 2"),
+    selected = "Choice 1",
+    multiple = T
+  ),
+  sliderInput(
+    inputId = "start",
+    label = "Start date:",
+    value = 1950,
+    min = 1950,
+    max = 2019
+  )
+)
+
+plot3_main <- mainPanel(
+  # plotlyOutput(outputId = "plot")
+)
+
+plot1_tab <- tabPanel(
   "Plot",
   sidebarLayout(
-    plot_sidebar,
-    plot_main,
+    plot1_sidebar,
+    plot1_main,
   ),
   fluidPage(
     p("")
   )
 )
 
-
-value_sensitive_tab <- tabPanel(
-  "Value Sensitive Design",
-  p("f")
+plot2_tab <- tabPanel(
+  "Plot",
+  sidebarLayout(
+    plot2_sidebar,
+    plot2_main,
+  ),
+  fluidPage(
+    p("")
+  )
 )
 
+plot3_tab <- tabPanel(
+  "Plot",
+  sidebarLayout(
+    plot3_sidebar,
+    plot3_main,
+  ),
+  fluidPage(
+    p("")
+  )
+)
 
 ui <- navbarPage(
   "LGBTQ Characters in Youth Cartoons",
   intro_tab,
-  plot_tab,
-  value_sensitive_tab
+  plot1_tab,
+  plot2_tab,
+  plot3_tab
 )
