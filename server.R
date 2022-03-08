@@ -1,6 +1,7 @@
 library(ggplot2)
 library(plotly)
 library(dplyr)
+library(data.table)
 
 lgbtq <- read.csv("trans-characters-in-youth-cartoons.csv")
 plot1_title <- function(orientations) {
@@ -60,36 +61,18 @@ server <- function(input, output) {
     return(my_plotly)
   })
   
-  # 
-  # # Calculate Summary Values:
-  # output$us_share_1950 <- co2 %>% 
-  #   filter(year == 1950, country == "United States") %>% 
-  #   pull(share_global_co2) %>% 
-  #   renderText()
-  # 
-  # output$us_share_2020 <- co2 %>% 
-  #   filter(year == 2020, country == "United States") %>% 
-  #   pull(share_global_co2) %>% 
-  #   renderText()
-  # 
-  # 
-  # output$us_cumulative_share_1950 <- co2 %>% 
-  #   filter(year == 1950, country == "United States") %>% 
-  #   pull(share_global_cumulative_co2) %>% 
-  #   renderText()
-  # 
-  # output$us_cumulative_share_2020 <- co2 %>% 
-  #   filter(year == 2020, country == "United States") %>% 
-  #   pull(share_global_cumulative_co2) %>% 
-  #   renderText()
-  # 
-  # output$eur_cumulative_share_1950 <- co2 %>% 
-  #   filter(year == 1950, country == "Europe") %>% 
-  #   pull(share_global_cumulative_co2) %>% 
-  #   renderText()
-  # 
-  # output$eur_cumulative_share_2020 <- co2 %>% 
-  #   filter(year == 2020, country == "Europe") %>% 
-  #   pull(share_global_cumulative_co2) %>% 
-  #   renderText()
+  output$plot3 <- renderPlotly({
+    race_count <- lgbtq %>% group_by(year) %>% count(race)
+    
+    lgbtq <- lgbtq %>% filter(race %in% input$user_category) %>% filter(year %inrange% input$user_select) %>% group_by(year) %>% count(race)
+    
+    chart3 <- ggplot(data = lgbtq) + geom_col(mapping = aes(x = year, y = n, fill = race)) + xlab("Year") + ylab("Number of Cartoon Characters")
+    
+    ggplotly(chart3)
+    
+    my_plotly_plot <- ggplotly(chart3)
+    
+    return(my_plotly_plot)
+    
+  })
 }

@@ -53,22 +53,23 @@ plot2_main <- mainPanel(
 plot3_sidebar <- sidebarPanel(
   selectInput(
     inputId = "user_category",
-    label = "Countries",
-    choices = c("Choice 1", "Choice 2"),
+    label = "Select Race:",
+    choices = lgbtq$race,
     selected = "Choice 1",
     multiple = T
   ),
   sliderInput(
-    inputId = "start",
-    label = "Start date:",
-    value = 1950,
-    min = 1950,
-    max = 2019
+    inputId = "user_select",
+    label = "Select Year:",
+    value = c(1996, 2020),
+    min = 1996,
+    max = 2021,
+    step = 1
   )
 )
 
 plot3_main <- mainPanel(
-  # plotlyOutput(outputId = "plot")
+  plotlyOutput(outputId = "plot3")
 )
 
 plot1_tab <- tabPanel(
