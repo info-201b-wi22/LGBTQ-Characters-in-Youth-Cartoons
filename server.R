@@ -66,7 +66,7 @@ server <- function(input, output) {
     
     lgbtq <- lgbtq %>% filter(race %in% input$user_category) %>% filter(year %inrange% input$user_select) %>% group_by(year) %>% count(race)
     
-    chart3 <- ggplot(data = lgbtq) + geom_col(mapping = aes(x = year, y = n, fill = race)) + xlab("Year") + ylab("Number of Cartoon Characters")
+    chart3 <- ggplot(data = lgbtq) + geom_col(mapping = aes(x = year, y = n, fill = race)) + xlab("Year") + ylab("Number of Cartoon Characters") + labs(title = "Representation of Race in LGBTQ Characters Over the Years")
     
     ggplotly(chart3)
     
