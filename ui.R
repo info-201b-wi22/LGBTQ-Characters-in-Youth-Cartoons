@@ -47,7 +47,7 @@ plot_tab <- tabPanel(
 
 value_sensitive_tab <- tabPanel(
   "Value Sensitive Design",
-  p("s")
+  p("f")
 )
 
 
