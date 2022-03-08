@@ -1,10 +1,12 @@
 library(ggplot2)
 library(plotly)
+library(bslib)
 lgbtq <- read.csv("trans-characters-in-youth-cartoons.csv")
 
 intro_tab <- tabPanel(
   "Introduction",
-  fluidPage(
+  fluidPage( theme = bs_theme_update(theme, primary = "#A337AE", success = "#FDF43E", base_font = font_google("Quicksand"), 
+                                     font_scale = NULL, `enable-gradients` = TRUE, bootswatch = "flatly"),
     h1("The Dataset"),
     p(""),
     h1("Summary"),
