@@ -108,7 +108,9 @@ plot3_tab <- tabPanel(
     plot3_main,
   ),
   fluidPage(
-    p("This chart attempts to understand how the representation of race in LGBTQ cartoon characters has changed over the course of time. By seeing how the representation of race has changed over time, we can also examine the intersectionality between race and sexual orientation. Thus, we can view whether the races are equally represented and if there has become a more equal representation currently versus throughout history.")
+    p("This chart attempts to understand how the representation of race in LGBTQ cartoon characters has changed over the course of time. By seeing how the
+      representation of race has changed over time, we can also examine the intersectionality between race and sexual orientation. Thus, we can view whether
+      the races are equally represented and if there has become a more equal representation currently versus throughout history.")
   )
 )
 
