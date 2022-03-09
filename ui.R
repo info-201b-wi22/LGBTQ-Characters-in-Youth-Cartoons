@@ -59,14 +59,14 @@ plot2_main <- mainPanel(
 plot3_sidebar <- sidebarPanel(
   selectInput(
     inputId = "user_category",
-    label = "Select Race:",
+    label = "Select Race(s):",
     choices = lgbtq$race,
-    selected = "Choice 1",
+    selected = "POC",
     multiple = T
   ),
   sliderInput(
     inputId = "user_select",
-    label = "Select Year:",
+    label = "Select Year Range:",
     value = c(1996, 2020),
     min = 1996,
     max = 2021,
@@ -108,7 +108,7 @@ plot3_tab <- tabPanel(
     plot3_main,
   ),
   fluidPage(
-    p("")
+    p("This chart attempts to understand how the representation of race in LGBTQ cartoon characters has changed over the course of time. By seeing how the representation of race has changed over time, we can also examine the intersectionality between race and sexual orientation. Thus, we can view whether the races are equally represented and if there has become a more equal representation currently versus throughout history.")
   )
 )
 
