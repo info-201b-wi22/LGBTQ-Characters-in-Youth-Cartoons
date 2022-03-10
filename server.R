@@ -45,7 +45,9 @@ server <- function(input, output) {
                               "Year: ", year),
                               group = 1)) +
       labs(title = plot1_title(input$orientation),
-           x = "Year", y = "Characters")
+           x = "Year", y = "Characters") +
+      scale_x_continuous(limits = c(1995,2021))+
+      scale_y_continuous(limits = c(0, NA))
 
     # labs(title = "Title", color = custom_legend_titles[[input$user_category]])
 

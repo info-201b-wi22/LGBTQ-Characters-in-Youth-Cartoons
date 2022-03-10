@@ -85,7 +85,13 @@ plot1_tab <- tabPanel(
     plot1_main,
   ),
   fluidPage(
-    p("")
+    p("This plot depicts the total number of characters matching the selected
+      orientations, genders and races over time. There are many unique shapes
+      to these curves, which can tell the story of several different 
+      demographics. Interesting discoveries include the fact no nonbinary
+      characters (save 1 genderless character from 2011) were recorded until
+      2014! Or the 6 year difference between the first recorded gay male
+      character and the first recorded lesbian character.")
   )
 )
 
