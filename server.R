@@ -2,16 +2,17 @@ library(ggplot2)
 library(plotly)
 library(dplyr)
 library(data.table)
+library(stringr)
 
 lgbtq <- read.csv("trans-characters-in-youth-cartoons.csv")
 plot1_title <- function(orientations) {
-  start <- "Number of"
-  middle <- "" # toString(orientations) # Runs off screen too often
-  end <- "characters over time"
-  return(paste(start, middle, end))
+  start <- "Number of "
+  middle <- toString(orientations) # Runs off screen too often
+  end <- " Characters Over Time"
+  return(paste0(start, middle, end))
 }
 
-server <- function(input, output) {
+server <- function(input, output) { 
 
 
   output$plot1 <- renderPlotly({
@@ -44,7 +45,7 @@ server <- function(input, output) {
                               text = paste0("Characters: ", nchars,"<br>",
                               "Year: ", year),
                               group = 1)) +
-      labs(title = plot1_title(input$orientation),
+      labs(title = str_wrap(plot1_title(input$orientation), 110),
            x = "Year", y = "Characters") +
       scale_x_continuous(limits = c(1995,2021))+
       scale_y_continuous(limits = c(0, NA))
@@ -74,8 +75,8 @@ server <- function(input, output) {
     OverallGraphPt3 <- OverallGraphPt2 %>% mutate(ImplicitPercentage = 1-ExplicitPercentage)
     
     Graph <- ggplot(data = OverallGraphPt3) +
-           geom_col(mapping = aes(x = input$role, y = ExplicitPercentage), group = 1, color = "red", fill = "white")+
-            theme_dark() + scale_y_continuous(labels = scales::percent, limits = c(0,1)) + labs(title = "Explicit Percentages Based on the Role of Character", x = "role", y = "Explicit Percentage")
+           geom_col(mapping = aes(x = input$role, y = ExplicitPercentage), group = 1, color = "orchid4", fill = "gold2")+
+            theme_classic() + scale_y_continuous(labels = scales::percent, limits = c(0,1))  + coord_flip() + labs(title = "Explicit Percentages Based on the Role of Character", x = "Role", y = "Explicit Percentage")
     
     my_plotly <- ggplotly(Graph)
     
@@ -87,7 +88,7 @@ server <- function(input, output) {
     
     lgbtq <- lgbtq %>% filter(race %in% input$user_category) %>% filter(year %inrange% input$user_select) %>% group_by(year) %>% count(race)
     
-    chart3 <- ggplot(data = lgbtq) + geom_col(mapping = aes(x = year, y = n, fill = race)) + xlab("Year") + ylab("Number of Cartoon Characters") + labs(title = "Representation of Race in LGBTQ Characters Over the Years")
+    chart3 <- ggplot(data = lgbtq) + geom_col(mapping = aes(x = year, y = n, fill = race)) + xlab("Year") + ylab("Number of Cartoon Characters") + labs(title = "Representation of Race in LGBTQ Characters Over the Years", fill = "Race")
     
     ggplotly(chart3)
     
