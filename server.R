@@ -73,7 +73,7 @@ server <- function(input, output) {
     
     Graph <- ggplot(data = OverallGraphPt3) +
            geom_col(mapping = aes(x = input$role, y = ExplicitPercentage), group = 1, color = "red", fill = "white")+
-            theme_dark() + scale_y_continuous(labels = scales::percent, limits = c(0,1)) + labs(title = "Explicit percentages based on the role of character", x = "role", y = "Explicit Percentage")
+            theme_dark() + scale_y_continuous(labels = scales::percent, limits = c(0,1)) + labs(title = "Explicit Percentages Based on the Role of Character", x = "role", y = "Explicit Percentage")
     
     my_plotly <- ggplotly(Graph)
     
