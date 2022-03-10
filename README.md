@@ -11,7 +11,7 @@ Nic Chin: nchin@uw.edu
 
 Faith Lee: faidlee@uw.edu
 
-Link: Link to your Shiny App here
+Link: https://jacksonhwang12.shinyapps.io/final-project-jacksonhwang12/
 
 # Introduction
 
